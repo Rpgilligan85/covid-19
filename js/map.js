@@ -1,15 +1,19 @@
+//Create Map
 var map = L.map("map").setView([42, -100.9], 4);
-var marker = L.marker([51.5, -0.09]).addTo(map);
 
+//Load data
 d3.json("../data/usa.json").then(data => {
 	var geo = data.features;
 	console.log("map", geo);
 
+	//Add data to map
 	L.geoJSON(geo, {
 		onEachFeature: onEachPoly,
 		style: stylePolys
 	}).addTo(map);
 });
+
+//Create map popup
 function onEachPoly(feature, layer) {
 	layer.bindPopup(
 		"<b>Total: </b>" +
@@ -31,7 +35,7 @@ function onEachPoly(feature, layer) {
 		layer.openPopup(e.latlng);
 	});
 }
-
+//Style polygons
 function stylePolys(feature) {
 	return {
 		fillColor: this.getColor(Math.random(), feature),
@@ -42,6 +46,8 @@ function stylePolys(feature) {
 		fillOpacity: 0.7
 	};
 }
+
+//Get color from data
 function getColor(number, feature) {
 	//blue -> yellow -> orange
 	const val = number * 100;
