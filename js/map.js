@@ -30,10 +30,10 @@ function onEachPoly(feature, layer) {
 			(Math.random() * 100).toFixed(0) +
 			"%"
 	);
-	layer.on("mouseout", e => {
+	layer.on("mouseout", function() {
 		layer.closePopup();
 	});
-	layer.on("mousemove", e => {
+	layer.on("mousemove", function(e) {
 		layer.openPopup(e.latlng);
 	});
 }
