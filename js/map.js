@@ -2,7 +2,7 @@
 var map = L.map("map").setView([42, -100.9], 4);
 
 //Load data
-d3.json("../data/usa.json").then(function(data) {
+$.getJSON("../data/usa.json").then(function(data) {
 	var geo = data.features;
 	console.log("map", geo);
 
