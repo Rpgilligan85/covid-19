@@ -16,7 +16,9 @@ d3.json("../data/usa.json").then(data => {
 //Create map popup
 function onEachPoly(feature, layer) {
 	layer.bindPopup(
-		"<b>Total: </b>" +
+		"<h3>" +
+			feature.properties.name +
+			"</h3><b>Total: </b>" +
 			(Math.random() * 100).toFixed(0) +
 			"<br/> <b>No Issue: </b>" +
 			(Math.random() * 100).toFixed(0) +
